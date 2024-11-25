@@ -15,9 +15,10 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text(appTitle),
         ),
-        //SingleChildScrollView　スクロールできる
+        //SingleChildScrollView　：スクロールできる
         body: const SingleChildScrollView(
-          //Column 子ウィジェットを縦方向に並べます。Columnの中に配置されたウィジェットは、上から下へと順番に表示される
+          //Column 子ウィジェットを縦方向に並べます。
+          //Columnの中に配置されたウィジェットは、上から下へと順番に表示される
           child: Column(
             children: [
               TitleSection(
@@ -25,6 +26,16 @@ class MyApp extends StatelessWidget {
                 location: 'Kandersteg, Switzerland',
               ),
               ButtonSection(),
+                TextSection(
+                  description:
+                 'Lake Oeschinen lies at the foot of the Blüemlisalp in the '
+                 'Bernese Alps. Situated 1,578 meters above sea level, it '
+                 'is one of the larger Alpine Lakes. A gondola ride from '
+                  'Kandersteg, followed by a half-hour walk through pastures '
+                  'and pine forest, leads you to the lake, which warms to 20 '
+                 'degrees Celsius in the summer. Activities enjoyed here '
+                  'include rowing, and riding the summer toboggan run.',
+  ),
             ],
           ),
         ),
@@ -153,6 +164,28 @@ class ButtonWithText extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+//テキストセクションの作り込み
+class TextSection extends StatelessWidget {
+  const TextSection({
+    super.key,
+    required this.description,
+  });
+
+  final String description;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(32),
+      child: Text(
+        description,
+         //softWrapはいい感じに改行してくれる
+        softWrap: true,
+      ),
     );
   }
 }

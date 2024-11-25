@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text(appTitle),
         ),
+        //SingleChildScrollView　スクロールできる
         body: const SingleChildScrollView(
+          //Column 子ウィジェットを縦方向に並べます。Columnの中に配置されたウィジェットは、上から下へと順番に表示される
           child: Column(
             children: [
               TitleSection(
@@ -28,7 +30,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
+//StatelessWidgetは、状態を持たないウィジェット
+//一度構築されたら、その後のウィジェットの状態の変化に応じて再構築されることはありません。静的UI
 class TitleSection extends StatelessWidget {
   const TitleSection({
     super.key,
@@ -48,9 +51,11 @@ class TitleSection extends StatelessWidget {
           Expanded(
             /*1*/
             child: Column(
+              //CrossAxisAlignment Row や Column などのレイアウトウィジェットの
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 /*2*/
+                //Padding　余白　太文字のテキストの下に８ポイントの余白を作る
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(

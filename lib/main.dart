@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     const String appTitle = 'Flutter layout demo';
     return MaterialApp(
-      //アプリ全体の名前
+      //アプリ全体の名前。Andoridのシュミレータでは見えないタイトル
       title: appTitle,
       home: Scaffold(
         appBar: AppBar(
@@ -25,21 +25,24 @@ class MyApp extends StatelessWidget {
           //Columnの中に配置されたウィジェットは、上から下へと順番に表示される
           child: Column(
             children: [
+              ImageSection(
+                image: 'images/lake.jpg'
+                ),
               TitleSection(
                 name: 'Oeschinen Lake Campground',
                 location: 'Kandersteg, Switzerland',
                 ),
               ButtonSection(),
-                TextSection(
-                  description:
-                 'Lake Oeschinen lies at the foot of the Blüemlisalp in the '
-                 'Bernese Alps. Situated 1,578 meters above sea level, it '
-                 'is one of the larger Alpine Lakes. A gondola ride from '
-                  'Kandersteg, followed by a half-hour walk through pastures '
-                  'and pine forest, leads you to the lake, which warms to 20 '
-                 'degrees Celsius in the summer. Activities enjoyed here '
-                  'include rowing, and riding the summer toboggan run.',
-                  ),
+              TextSection(
+                description:
+                'Lake Oeschinen lies at the foot of the Blüemlisalp in the '
+                'Bernese Alps. Situated 1,578 meters above sea level, it '
+               'is one of the larger Alpine Lakes. A gondola ride from '
+               'Kandersteg, followed by a half-hour walk through pastures '
+               'and pine forest, leads you to the lake, which warms to 20 '
+               'degrees Celsius in the summer. Activities enjoyed here '
+               'include rowing, and riding the summer toboggan run.',
+                ),
             ],
           ),
         ),
@@ -202,6 +205,23 @@ class TextSection extends StatelessWidget {
          //softWrapはいい感じに改行してくれる
         softWrap: true,
       ),
+    );
+  }
+}
+
+//画像セクションの作り込み
+class ImageSection extends StatelessWidget {
+  const ImageSection({super.key, required this.image});
+
+  final String image;
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      image,
+      width: 600,
+      height: 240,
+      fit: BoxFit.cover,
     );
   }
 }

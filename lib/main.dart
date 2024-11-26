@@ -10,12 +10,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     const String appTitle = 'Flutter layout demo';
     return MaterialApp(
+      //アプリ全体の名前
       title: appTitle,
       home: Scaffold(
         appBar: AppBar(
           title: const Text(appTitle),
+          centerTitle: true,
+          backgroundColor: Colors.blue,
         ),
-        //SingleChildScrollView　：スクロールできる
+        //SingleChildScrollView　：スクロールできる表示領域的な感じ
         body: const SingleChildScrollView(
           //Column 子ウィジェットを縦方向に並べます。
           //Columnの中に配置されたウィジェットは、上から下へと順番に表示される
@@ -24,7 +27,7 @@ class MyApp extends StatelessWidget {
               TitleSection(
                 name: 'Oeschinen Lake Campground',
                 location: 'Kandersteg, Switzerland',
-              ),
+                ),
               ButtonSection(),
                 TextSection(
                   description:
@@ -35,7 +38,7 @@ class MyApp extends StatelessWidget {
                   'and pine forest, leads you to the lake, which warms to 20 '
                  'degrees Celsius in the summer. Activities enjoyed here '
                   'include rowing, and riding the summer toboggan run.',
-  ),
+                  ),
             ],
           ),
         ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 void main() => runApp(const MyApp());
 
 //メイン部分
+//基本的にここで定義してその下にアイテムを加えていく
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -59,9 +60,13 @@ class TitleSection extends StatelessWidget {
   final String name;
   final String location;
 
+//Padding以降をメインクラスに書くことができる
+//StatelessWidgetで切り出すことでメインを軽くする（コードを見やすくしている、ネストを深くしない）
+//切り出し方は人それぞれの好み
   @override
   Widget build(BuildContext context) {
     return Padding(
+       //下のものを横並び（raw）にしたいという指示で、上下左右32の余白
       padding: const EdgeInsets.all(32),
       child: Row(
         children: [
@@ -78,6 +83,8 @@ class TitleSection extends StatelessWidget {
                   child: Text(
                     //nameで指定したテキストのスタイル指定
                     name,
+                    //const は描画のパフォーマンスが上がる
+                    //不確定要素（外からとってきた）ものがあるとつけれない
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
@@ -97,7 +104,13 @@ class TitleSection extends StatelessWidget {
             Icons.star,
             color: Colors.red[500],
           ),
-          const Text('41'),
+          const Text(
+            '41',
+            style: TextStyle(
+              fontWeight: FontWeight.w900,
+              fontSize: 20,
+            ),
+          ),
         ],
       ),
     );
